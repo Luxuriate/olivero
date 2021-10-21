@@ -1,0 +1,247 @@
+\documentclass[12pt, a4paper, openright]{article}
+
+
+\usepackage[utf8]{inputenc} 
+
+
+\title{Labbrapport}
+\author{Oliver Stadig}
+\date{\today}
+
+
+\usepackage[swedish]{babel}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{graphicx}
+\usepackage{tocstyle}
+
+\usepackage{ifxetex}
+\ifxetex
+   \usepackage{fontspec}
+   \setmainfont{Georgia}
+\else
+   
+   \usepackage{times}
+\fi
+
+
+\lstset{breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  basicstyle=\ttfamily\small
+}
+
+
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+
+
+
+\vspace*{-4cm} 
+\noindent\includegraphics[width=3cm]{kaulogo.jpg}
+\vspace{2cm} 
+
+  \hrule\vspace{0.5cm}
+  \textbf{\Huge\@title}
+  \vspace{0.5cm}\hrule
+  
+  \vspace{0.5cm}
+  \@author
+  
+  \vspace{0.5cm}
+  \@date
+  
+\vspace{0.5cm}
+  DVGA14 Datavetenskapens grunder
+  
+  Datavetenskap
+  
+  Fakulteten för hälsa-, teknik- och naturvetenskap
+  \vspace{0.5cm}\hrule
+
+\end{flushleft}\egroup
+}
+\makeatother
+
+
+\begin{document}
+
+\maketitle  
+
+\tableofcontents  
+
+\newpage
+
+\section{Inledning}
+
+
+\noindent
+Inom den datatekniska världen finns det en stor fördel av att kunna olika sorters programmeringsspråk och allt vad det innebär. Det är också fördelaktigt att kunna hur operativsystemen är uppbyggda, hur skalen och promptar fungerar och hur de kommunicerar med resten av datorn.  I datavetenskapens värld så är allt sammankopplat och har ett samband. Information skickas runt genom 1:or och 0:or i datorns helt egna språk. Detta som sedan tolkas av datorns komponenter samt dess program. I denna rapport ska jag därför belysa användandet av Linux-skalet Bash som är en terminal för operativsystemet Linux. Förutom det så ska jag gå igenom användandet av Github och rapportskrivningsverktyget LaTeX.LaTeX är ett dokumentationsverktyg. LaTeX är otroligt kompatibelt med git:s versionhantering, vilket gör det väldigt fördelsaktigt att använda dem tillsammans.Github är en webbaserad lagring, samt hanterar versionshanteringen av våra projekt, vilket är vår labbrapport i det här fallet.
+
+\newpage
+
+\section{Utförande}
+
+\subsection{Skalprogrammering}
+Jag arbetade med Linux-skalet Bash i nio olika steg. 
+
+\subsubsection{Steg 1}
+
+I första steget så öppnade vi upp en ny egen terminal, där är vi fria att skriva våra egna kommandon.Terminalen som vi öppnar kallas för Shell-prompt. Efter att vi har öppnat terminalen började vi med 5 enkla kommandon:
+
+\subsubsection{Steg 2}
+
+pwd - printar hela filnamnet på den aktuella filen ifrån katalogen.
+\noindent
+
+id - ger information om använderen som använder Shell-prompten.
+\noindent
+
+
+date - säger dagens datum/månad samt år.
+\noindent
+
+asdf - icke fungerande command.
+\noindent
+
+yes - skriver ut strängen konstant tills användaren eliminerar den, antingen ctrl c eller ctrl z.
+
+\noindent
+
+\subsubsection{Steg 3}
+Här testar vi att ta in 2 parametrar i ett kommando och för att vi ska lyckas med detta så separerar vi dessa med mellanslag. 
+
+
+man yes - Försöker köra manual hela tiden, måste avslutas manuellt genom q eller control c m.m.
+yes  yes DVGA14 kau - printar DVGA14 i oändlighet.
+man curl - överför data ifrån manualen. 
+curl - Överför data till eller ifrån servern.
+man mkdir - hämtar manuellen för mkdir. 
+mkdir labb - Skapar filen "labb"
+cd labb - Går in i filen labb för att det vi skriver i bash ska hända/sparas där.
+cd .. - Går ett steg tillbaka vilket efter cd labb blir till föregående katalog, alltså vårat projekt.
+rmdir labb - raderar filen labb.
+
+\subsubsection{Steg 4}
+
+ls - listar/skriver ut våra filer och kataloger, samt viktig info
+ls -l listar/skriver ut den aktiva katalogen i ett långt format
+ls -la listar/skriver ut alla filer ur den aktiva katalogen i ett långt format samt tiden den skapades.
+date - skriver ut datum
+
+\subsubsection{Steg 5}
+
+date > dagensdatum.txt - sparar dagens datum i filen dagensdatum.txt
+cat dagensdatum.txt skriver ut innehållet i dagensdatum.txt
+cat dagensdatum.txt dagensdatum.txt dagensdatum.txt > trippeldatum.txt- sparar dagensdatum, tre gånger i trippeldatum.txt
+
+cat  < trippeldatum.txt - skriver ut värdet i trippeldatum.txt vilket är dagens datum tre gånger.
+
+\subsubsection{Steg 6 Variabler}
+
+x=5 -tilldelar x värdet 5
+echo $x - skriver ut värdet i x vilket är 5.
+x=9 - tilldelar x det nya värdet 9
+echo $x -skriver ut värdet i x vilket nu är ändrat ifrån 5 till 9
+x="Hello kau" - Ändrar variabeln x ifrån siffran 9 till Hello kau.
+echo $x - printar hello kau
+x=3 - ger x värdet 3
+y=7 ger y värdet 7
+echo $(($x + $y)) Adderar ihop värdet i x + värdet i y, vilket blir 10.
+
+\subsubsection{Steg 7 Redigera script}
+
+För att redigera en fil så behövs det en editor och den vi använder oss av är Nano.
+På det här steget så ska vi skapa en scriptfil och det är kommandon som vi redan har använt. Nu ska vi samla kommandon i ett script som kan köras om och om igen.
+Resultatet av vårt script ligger under Referenser - A Programkod
+
+\newpage
+
+\subsection{Gitlab och LaTeX}
+Laborationen med Gitlaben var att vi först började vårt arbete i LaTeX. Laborationen gick på att lära oss använda terminalen. För att sedan öva på att använda git för versionhantering. För att sedan dokumentera detta i LaTeX. Laborationen gick till genom en flerstegs process:
+
+Första steget var att skapa konton och bekanta oss med Overleaf/Git och att skapa vårt första projekt. Efter att vi har skapat vårt första projekt så började vi med att skapa vår dokumentstruktur. Vi använde oss av en färdigmall som vi sedan utvecklade. Vi började med att kompilera och göra basala ändringar för att sedan lägga till rubriker och färdigställa mallen för rapportskrivning. Det var efter detta som vi började med Git, syftet var att vi skulle versionshantera våra filer. För att kunna versionshantera våra filer så behövde vi ladda ner Overleaffilerna till vår lokala dator. Vi öppnade kommandoprompten genom att använda Git CMD. Vi förflyttade oss ifrån starten i prompten till hemkatalogen för att sedan kunna göra en clone ifrån git.Vi laddade därefter ner våra overleaffiler till gitmappen som vi nyss skapade på datorn.Efter att vi har hämtat ner filerna och skapade en kopia, började vi använda oss av git add, git commit och git push. Git Add använde vi för att lägga till filer till vår lokala mapp, git commit för att spara den nuvarande versionen.Sedan används git push för att skicka iväg allt. Efter att vi har git push:at våra filer så var rapporten redo för att skrivas.
+
+
+
+
+
+\newpage
+
+\section{Resultat}
+
+
+Resultat av skalprogrammeringen var att efter att vi har gått igenom alla commands, så blev sista steget att vi skulle göra ett script.Resultatet hittar du under Referenser A Programkod:
+
+
+Vårt första script var först inte körbart, därför var vi tvungna att använda commandot chmod:
+chmod +x mittprogram.sh Efter detta så var vi tvungna att starta det för att skriptet skulle gå igång:
+./mittprogram.sh
+Resultatet av detta var nu att scriptet är körtbart.
+
+Resultatet av Gitlabben blev att på sista steget, kunde vi versionshantera vårt dokument. Hämta andra versioner genom gitpull, spara versioner genom gitcommit och till slut överföra versioner igenom gitpush.
+
+\newpage
+
+\section{Erfarenheter och slutsatser} 
+
+\subsection{Erfarenheter:}
+
+Först och främst fick jag grundläggande kunskaper inom Shell terminalen, grundläggande hantering av Github och dess versionhantering och rapportskrivning i LaTeX.
+
+\subsection{Slutsatser}
+
+Detta var bra:
+
+
+\noindent Att verkligen få börja ifrån grunden, jobba stegvis. 
+
+\noindent Vad kan förbättras?
+
+
+\noindent Lite mer tydlighet kring laborationerna, ett specifikare syfte och om det är en examination eller ett övningstillfälle. 
+
+
+\noindent Vad har du lärt dig?
+
+\noindent Har lärt mig använda Git för att använda och lagra versionhantering. Samt att hämta och och skicka iväg olika versioner av våra filer. Jag har lärt mig att skriva rapporter i LaTeX.
+Jag har dessutom lärt mig hur man skriver commands i Linux, sparar i filer via Bash och hur man tilldelar siffor eller bokstäver ett värde. Som sedan är lagrade tills man ger dom ett nytt värde. Sammanfattningsvis en väldigt bra grund för framtiden. 
+
+
+
+
+\newpage
+
+%% Se filen references.bib
+\bibliography{references}
+\bibliographystyle{unsrt}
+
+% Bilagor; programkod eller liknande
+\begin{appendices}
+
+\section{Programkod}
+
+
+#!/bin/bash
+
+echo "Mitt första script!"
+
+
+echo -n "Klockan är nu "; date +%H:%M
+
+
+read -p "Ditt namn? " namn
+
+
+echo "Hej $namn"
+
+
+
+
+\end{appendices}
+
+\end{document}
